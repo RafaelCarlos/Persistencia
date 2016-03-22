@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Persistencia Realm</string>
+    <string name="title_activity_add_update_discipline">AddUpdateDiscipline</string>
+</resources>
