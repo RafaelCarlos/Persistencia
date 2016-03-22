@@ -13,6 +13,7 @@ public class Discipline extends RealmObject {
     private long id;
     private String nome;
 
+
     public long getId() {
         return id;
     }
@@ -28,4 +29,5 @@ public class Discipline extends RealmObject {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }

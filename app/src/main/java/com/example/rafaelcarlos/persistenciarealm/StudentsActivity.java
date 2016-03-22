@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
-import br.com.thiengo.realmstudents.adapter.StudentAdapter;
-import br.com.thiengo.realmstudents.domain.Student;
+import com.example.rafaelcarlos.persistenciarealm.adapter.StudentAdapter;
+import com.example.rafaelcarlos.persistenciarealm.model.Student;
+
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
@@ -34,11 +35,11 @@ public class StudentsActivity extends AppCompatActivity {
             }
         };
 
-        realm.addChangeListener(realmChangeListener);
-        students = realm.where( Student.class ).findAll();
+        realm.addChangeListener( realmChangeListener);
+        students = realm.where(Student.class).findAll();
 
         lvStudents = (ListView) findViewById(R.id.lv_students);
-        lvStudents.setAdapter( new StudentAdapter( this, students, false ));
+        lvStudents.setAdapter(new StudentAdapter(this, students, false));
     }
 
 
@@ -52,8 +53,8 @@ public class StudentsActivity extends AppCompatActivity {
 
 
     // LISTENERS
-    public void callAddStudent( View view){
-        Intent it = new Intent( this, AddUpdateStudentActivity.class );
+    public void callAddStudent(View view) {
+        Intent it = new Intent(this, AddUpdateStudent.class);
         startActivity(it);
     }
 }

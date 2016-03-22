@@ -12,7 +12,10 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        RealmConfiguration config = new RealmConfiguration.Builder(this).build();
+        RealmConfiguration config = new RealmConfiguration.Builder(this)
+                .name("realm-students")
+                .deleteRealmIfMigrationNeeded()
+                .build();
 
         Realm.setDefaultConfiguration(config);
     }

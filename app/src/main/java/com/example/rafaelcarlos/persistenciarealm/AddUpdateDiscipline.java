@@ -32,7 +32,7 @@ public class AddUpdateDiscipline extends AppCompatActivity {
 
         discipline = new Discipline();
 
-        realm = Realm.getInstance(this);
+        realm = Realm.getDefaultInstance();
         disciplines = realm.where(Discipline.class).findAll();
 
         //Se for maior que zero significa que um update.

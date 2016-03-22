@@ -20,9 +20,12 @@ import io.realm.RealmResults;
  */
 public class DisciplineAdapter extends RealmBaseAdapter<Discipline> {
 
+    private Realm realm;
 
-    public DisciplineAdapter(Context context, RealmResults<Discipline> realmResults, boolean automaticUpdate) {
+    public DisciplineAdapter(Context context, Realm realm, RealmResults<Discipline> realmResults, boolean automaticUpdate) {
         super(context, realmResults, automaticUpdate);
+
+        this.realm = realm;
     }
 
     @Override
@@ -61,7 +64,7 @@ public class DisciplineAdapter extends RealmBaseAdapter<Discipline> {
         holder.btRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Realm realm = Realm.getInstance(context);
+                Realm realm = Realm.getDefaultInstance();
 
                 realm.beginTransaction();
                 d.removeFromRealm();

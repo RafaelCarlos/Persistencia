@@ -6,7 +6,7 @@ import io.realm.annotations.PrimaryKey;
 /**
  * Created by viniciusthiengo on 11/9/15.
  */
-public class Grade extends RealmObject {
+public class Nota extends RealmObject {
     @PrimaryKey
     private long id;
     private Discipline discipline;

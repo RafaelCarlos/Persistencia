@@ -32,10 +32,19 @@ public class DisciplinaActivity extends AppCompatActivity {
         addDisciplinas = (Button) findViewById(R.id.bt_add_disciplinas);
 
 
-        realm = Realm.getInstance(this);
+        realm = Realm.getDefaultInstance();
+
+        realmChangeListener = new RealmChangeListener() {
+            @Override
+            public void onChange() {
+                ((DisciplineAdapter) lvDisciplinas.getAdapter()).notifyDataSetChanged();
+            }
+        };
+
+        realm.addChangeListener(realmChangeListener);
 
         disciplines = realm.where(Discipline.class).findAll();
-        lvDisciplinas.setAdapter(new DisciplineAdapter(this, disciplines, true));
+        lvDisciplinas.setAdapter(new DisciplineAdapter(this, realm, disciplines, false));
 
         addDisciplinas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +57,7 @@ public class DisciplinaActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        realm.removeAllChangeListeners();
         realm.close();
         super.onDestroy();
     }
